@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'SwiftBestPractice' do
     pod 'SwiftyJSON'
-    pod 'Alamofire', '~> 3.5'
+    pod 'Alamofire'
 end
 
 target 'SwiftBestPracticeTests' do

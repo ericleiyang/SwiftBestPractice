@@ -1,0 +1,6 @@
+framework module Pods_SwiftBestPracticeTests {
+  umbrella header "Pods-SwiftBestPracticeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
