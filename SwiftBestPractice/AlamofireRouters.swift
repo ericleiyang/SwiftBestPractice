@@ -9,12 +9,12 @@
 import Foundation
 import Alamofire
 
-let baseURLString = "http://Base URL"
+let baseURLString = "http://api.openweathermap.org/data/2.5"
 var OAuthToken: String?
 
-enum AlamofireRouter<T where T: RouterObject >: URLRequestConvertible{
+enum AlamofireRouter<T where T: Router >: URLRequestConvertible{
     case CreateObject(T, [String: AnyObject])
-    case ReadObject(T, String)
+    case ReadObject(T, NSDictionary)
     case UpdateObject(T, String, [String: AnyObject])
     case DeleteObject(T, String)
     
@@ -35,8 +35,8 @@ enum AlamofireRouter<T where T: RouterObject >: URLRequestConvertible{
         switch self {
         case .CreateObject(let object, _):
             return object.createObjectPath()
-        case .ReadObject(let object, let identifier):
-            return object.readObjectPath(identifier)
+        case .ReadObject(let object, let parameters):
+            return object.readObjectPath(parameters)
         case .UpdateObject(let object, let identifier, _):
             return object.updateObjectPath(identifier)
         case .DeleteObject(let object, let identifier):
@@ -45,8 +45,9 @@ enum AlamofireRouter<T where T: RouterObject >: URLRequestConvertible{
     }
     
     var URLRequest: NSMutableURLRequest {
-        let URL = NSURL(string: baseURLString)!
-        let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+        let URL = NSURL(string: baseURLString.stringByAppendingString(path))!
+        
+        let mutableURLRequest = NSMutableURLRequest(URL: URL)
         mutableURLRequest.HTTPMethod = method.rawValue
         
         if let token = OAuthToken {

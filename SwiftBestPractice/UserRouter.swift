@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: RouterObject {
+struct UserRouter: Router {
     let rootPath = "/user"
     
     func createObjectPath() -> String {
