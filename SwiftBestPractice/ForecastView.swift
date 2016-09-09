@@ -37,6 +37,11 @@ import UIKit
         view.frame = bounds
         view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         addSubview(view)
+        
+        self.timeLabel.adjustsFontSizeToFitWidth = true
+        self.iconLabel.adjustsFontSizeToFitWidth = true
+        self.temperatureLabel.adjustsFontSizeToFitWidth = true
+        
         return view
     }
     

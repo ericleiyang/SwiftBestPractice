@@ -18,6 +18,11 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.locationLabel.adjustsFontSizeToFitWidth = true
+        self.iconLabel.adjustsFontSizeToFitWidth = true
+        self.temperatureLabel.adjustsFontSizeToFitWidth = true
+        
         viewModel = WeatherViewModel()
         viewModel?.startLocationService()
     }
